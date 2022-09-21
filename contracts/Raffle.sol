@@ -35,7 +35,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     uint32 private immutable i_callbackGasLimit;
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORDS = 1;
-    address payable[] private s_players; //***Whenever we update a dynamic object, like an array or a mapping, we always want to omit an event, espically for frontend
+    address payable[] private s_players;
 
     //Lottery Varaiables
     address private s_recentWinner;

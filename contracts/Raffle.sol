@@ -77,7 +77,6 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     /// @notice Allows players to enter raffle by paying entrance fee, can only be access when raffle state is open, pushes entered players into s_players array emits event
     function enterRaffle() public payable {
-        //Set entrnce Fee
         if (msg.value < i_entranceFee) {
             revert enterRaffle_NotEnoughETHEntered();
         }
@@ -120,9 +119,6 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     function performUpkeep(
         bytes calldata /* performData */
     ) external override {
-        //Request the random number
-        //Once we get it, do something
-        //2 transaction process
         (bool upkeepNeeded, ) = checkUpkeep(''); 
         if (!upkeepNeeded) {
             revert performUpkeep__UpkeepNotNeeded(
@@ -149,7 +145,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
      * @param randomWords this is a random unit256 generated and returned to us by the VRF Coordinator
      */
     function fulfillRandomWords(
-        uint256 requestId, //What is requestID for??
+        uint256 requestId,
         uint256[] memory randomWords
     ) internal override {
         uint256 indexOfWinner = randomWords[0] % s_players.length;

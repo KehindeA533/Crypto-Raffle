@@ -5,18 +5,19 @@ require('solidity-coverage')
 require('@nomiclabs/hardhat-etherscan')
 require('hardhat-deploy')
 
-const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL
-const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL
+const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY
+
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 const COINMARKET_API_KEY = process.env.COINMARKET_API_KEY
 
 module.exports = {
   defaultNetwork: 'hardhat',
   networks: {
-    rinkeby: {
-      url: RINKEBY_RPC_URL,
-      accounts: [RINKEBY_PRIVATE_KEY], //ethers.getSigners()
-      chainId: 4,
+    goerli: {
+      url: GOERLI_RPC_URL,
+      accounts: [GOERLI_PRIVATE_KEY],
+      chainId: 5,
       blockConfirmation: 6,
     },
     hardhat: {
@@ -40,11 +41,11 @@ module.exports = {
     deployer: {
       default: 0,
     },
-    user: {
+    player: {
       default: 1,
     },
   },
   mocha: {
-    timeout: 300000,
+    timeout: 300000, //300 seconds
   },
 }

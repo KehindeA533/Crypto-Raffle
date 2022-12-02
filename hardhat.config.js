@@ -41,11 +41,11 @@ module.exports = {
     deployer: {
       default: 0,
     },
-    player: {
+    user: {
       default: 1,
     },
   },
   mocha: {
-    timeout: 300000, //300 seconds
+    timeout: 300000,
   },
 }
